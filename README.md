@@ -1,1 +1,1 @@
-# wow-rankings
+# World Of Warcraft rankings
