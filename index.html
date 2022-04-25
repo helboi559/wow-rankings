@@ -4,11 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
-    
-
+    <form id="charSearch">
+        <div class="region-select">
+        <label>Select character region: USA(us), Europe(eu), Korea(kr), Taiwan(tw)</label>
+        <select class="region-select" aria-label="Default select example">
+            <option selected>select</option>
+            <option value="us">us</option>
+            <option value="eu">eu</option>
+            <option value="kr">kr</option>
+            <option value="tw">tw</option>
+        </select>
+        </div>
+        <div class="server-select">
+            <label>Select realm(server): </label>
+            <select class="server-select" aria-label="Default select example">
+                <option selected>select</option>
+                <option value="alterac-mountains">alterac-mountains(us)</option>
+                <option value="skullcrusher">skullcrusher(us)</option>
+                <option value="kazzak">kazzak(eu)</option>
+                <option value="dalaran">dalaran(kr)</option>
+                <option value="skywall">skywall(tw)</option>
+            </select>
+        </div>
+        <div class="charName">
+        <label>Name of the character to find(case-insensitive): </label>
+        <input type="text">
+        </div>
+        <div class="specificInfo">
+            <label>Comma seperated list of fields to retrive for character</label>
+            <input type="text" value="gear">
+        </div>
+    </form>
     <!-- <script src="'https://raider.io/api/v1/raiding/progression?raid=sepulcher-of-the-first-ones&difficulty=mythic&region=us'"></script> -->
     <script src="main.js"></script>
 </body>
