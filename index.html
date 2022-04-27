@@ -14,7 +14,7 @@
         <div class="">
         <label for="regionSelect">Select character region: USA(us), Europe(eu), Korea(kr), Taiwan(tw)**REQUIRED**</label>
         <select id="regionSelect" aria-label="Default select example">
-            <option value="" id="selectedRegion" selected>select</option>
+            <option value="" selected>select</option>
             <option value="us">us</option>
             <option value="eu">eu</option>
             <option value="kr">kr</option>
@@ -36,10 +36,15 @@
         <label>Name of the character to find(case-insensitive): </label>
         <input type="text">
         </div>
-        <div id="specificInfo">
-            <label>Comma seperated list of fields to retrive for character</label>
-            <input type="text" value="">
-        </div>
+        <!-- <div class="">
+            <label>Specific Info about the Character: </label>
+            <select id="specificInfo" aria-label="Default select example">
+                <option selected>select</option>
+                <option value="gear">Gear</option>
+                <option value="raid_progression">Current Raid Progression</option>
+                <option value="mythic_plus_scores_by_season:current">Current Overall Dungeon Score</option>
+            </select>
+        </div> -->
         <div id="submitCharSearch">
             <label for="">Search for Character</label>
             <input type="submit">
@@ -52,7 +57,9 @@
                     content.</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
+                <li class="list-group-item" id="dungeonScore">Dungeon Score</li>
+                <li class="list-group-item" id="raidProgression">Raid Progression</li>
+                <li class="list-group-item" id="gear">Gear</li>
             </ul>
             <div class="card-body">
                 <a href="#" class="card-link">Card link</a>
