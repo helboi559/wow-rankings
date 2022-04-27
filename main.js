@@ -17,7 +17,7 @@ submitChar.addEventListener('click',(event) => {
     let cardInfo = document.querySelector(".card p")
     let cardSeasonScore = document.querySelector(".card li")
     // console.log(regionSelect.value)
-    async function testApi(){
+    async function displayChar(){
         let response = await fetch(`https://raider.io/api/v1/characters/profile?region=us&realm=firetree&name=fourscoops&fields=mythic_plus_scores_by_season%3Acurrent`)
         // https://raider.io/api/v1/characters/profile?region=${regionSelect.value}&realm=${serverSelect.value}&name=${charName.value}&fields=${specificCharInfo.value}
         let data = await response.json();
@@ -30,7 +30,51 @@ submitChar.addEventListener('click',(event) => {
         cardSeasonScore.textContent = `Season 3 score : ${data.mythic_plus_scores_by_season[0].scores.all}`
 
     }
-    testApi();
+    displayChar();
 })
-// console.log('selected region',selectedRegion)
 
+
+
+async function displayRio(){
+    let mythicRankings = document.querySelector('#mythicRankings')
+    let rioResponse = await fetch('https://raider.io/api/v1/mythic-plus/runs?season=season-sl-3&region=us&dungeon=all&affixes=all&page=0')
+    let rioListData = await rioResponse.json();
+    //return top 20 runs for the season and score
+    console.log(rioListData)
+    
+    let top20 = rioListData.rankings
+    // console.log(typeof top20)
+    for(let i = 0 ; i < top20.length; i++) {
+        console.log(top20[i])
+        let teamRun = top20[i]
+        //convert milliseconds to minutes/seconds
+        let convertTime = teamRun.run.clear_time_ms
+        const milliToMin = (convertTime) => {
+            let min = Math.floor(convertTime/60000)
+            // console.log(min)
+            let seconds = (convertTime % 60000 /1000).toFixed(0)
+            // console.log(seconds)
+            if(seconds<10) {
+                return `${min}:0${seconds}`
+            } else {
+                return `${min}:${seconds}`
+            }
+            
+        }
+        //create a new element and add each run details to each run
+        let runListItem = document.createElement('div');
+        runListItem.className = 'row'
+        runListItem.innerHTML = `
+        <div class="col">${teamRun.rank}</div>
+        <div class="col">${teamRun.run.dungeon.short_name}</div>
+        <div class="col">+${teamRun.run.mythic_level}</div>
+        <div class="col">${milliToMin(convertTime)}</div>
+        <div class="col">${teamRun.score}</div>
+        <div class="col">${teamRun.run.roster[0].character.name},${teamRun.run.roster[1].character.name}</div>
+        `
+        mythicRankings.appendChild(runListItem)
+    }
+}
+displayRio();
+
+//<div class="col">${teamRun.run.weekly_modifiers[0].name},${teamRun.run.weekly_modifiers[1].name},${teamRun.run.weekly_modifiers[2].name},${teamRun.run.weekly_modifiers[3].name}</div>

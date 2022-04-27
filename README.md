@@ -1,6 +1,6 @@
 # World Of Warcraft Rankings
 
-World of Warcraft(WOW) rankings provides an overview of achievemnts in a given season by displaying current progress to players by a collective score in 5-man team timed dungeons and current progression on Mythic(hardest difficulty) 20-man team, calculated boss count defeated(out of 11 this season).In addition, you can type in a name of a live character and get the individual score.
+World of Warcraft(WOW) rankings provides an overview of achievemnts in a given season by displaying **live** progress of players in 2 ways, _Dungeon(5-man team)_ and _Raid(20-man Team)_ content in the game. In addition we can search for a particular character and find more specific information about that is pertinent in determining if you are 'good' for recruitement or not. score in 5-man team timed dungeons and current progression on Mythic(hardest difficulty) 20-man team which is calculated boss count defeated(out of 11 this season).In addition, you can type in a name of a live character and get the individual rating score and .
 
 ## Resource(s)
 
@@ -10,9 +10,23 @@ World of Warcraft(WOW) rankings provides an overview of achievemnts in a given s
 
 https://worldofwarcraft.com/en-us/game/status/us realm list
 
-## Dungeon progress (RIO Score)
+## Dungeon(5-man team) & the 'RIO' score:
 
--Show rankings for the current season by outlying the 5 man team run that was done
+This score is calculated with the following rules below:
+
+1. Completing a run within the time limit.
+2. Completing each dungeon(currently 10 active).
+3. Completing each variation of the dungeon(2 per.)
+4. Max Score of 200 points per variation with overall total being 4000 points.
+
+_Below is an example of what a overall score looks like._
+![example picture](./images/character_example.png)
+
+Live data is pulled and updated daily to outline to highest scoring 5-man run in the season that was completed to date.
+
+![example List](./images/List_example.png)
+
+Below is a sample of what the JSON code will look like in finding the best runs to date.
 
 ```javascript
 {
