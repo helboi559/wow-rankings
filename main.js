@@ -20,22 +20,24 @@ submitChar.addEventListener('click',(event) => {
     let cardSeasonScore = document.querySelector("#dungeonScore")
     let cardRaidPro = document.querySelector("#raidProgression")
     let cardGear = document.querySelector("#gear")
+    let cardIndividual = document.querySelector("#individualRuns")
     // console.log(regionSelect.value)
     
-    //GET DATA FROM API FROM 3 ENDPOINTS
+    //GET DATA FROM 4 ENDPOINTS IN API- Display in Hidden Card
     async function displayChar(){
         let responseDungeon = await fetch(`https://raider.io/api/v1/characters/profile?region=${regionSelect.value}&realm=${serverSelect.value}&name=${charName.value}&fields=mythic_plus_scores_by_season%3Acurrent`)
         // https://raider.io/api/v1/characters/profile?region=${regionSelect.value}&realm=${serverSelect.value}&name=${charName.value}&fields=${specificCharInfo.value}
         let dataDungeon = await responseDungeon.json();
 
         let responseRaid = await fetch(`https://raider.io/api/v1/characters/profile?region=${regionSelect.value}&realm=${serverSelect.value}&name=${charName.value}&fields=raid_progression`)
-        //
         let dataRaid = await responseRaid.json()
 
         let responseGear = await fetch(`https://raider.io/api/v1/characters/profile?region=${regionSelect.value}&realm=${serverSelect.value}&name=${charName.value}&fields=gear`)
-        //
         let dataGear = await responseGear.json()
-        console.log(dataGear)
+        
+        let individualRunBest = await fetch(`https://raider.io/api/v1/characters/profile?region=${regionSelect.value}&realm=${serverSelect.value}&name=${charName.value}&fields=mythic_plus_best_runs%3Aall`)
+        let dataIndividualRun = await individualRunBest.json();
+        console.log(dataIndividualRun)
 
         //show info and display character info in a card(avatar,name,character description, current season score)
         charCardInfo.style.display = "block"
@@ -45,6 +47,21 @@ submitChar.addEventListener('click',(event) => {
         cardSeasonScore.textContent = `Season 3 score : ${dataDungeon.mythic_plus_scores_by_season[0].scores.all}`
         cardRaidPro.textContent = `Current Progression: ${dataRaid.raid_progression['sepulcher-of-the-first-ones'].summary} `
         cardGear.textContent = `Gear Score: ${dataGear.gear.item_level_equipped}`
+
+        //add top 10 runs by the character by going through each run and creating new element
+        let tenBestRuns = dataIndividualRun.mythic_plus_best_runs
+        for(let j = 0; j < tenBestRuns.length ; j++) {
+            // console.log(tenBestRuns[j])
+            let newDungeon = document.createElement('div')
+            newDungeon.className = 'row'
+            newDungeon.innerHTML = `
+            <div class="col">${tenBestRuns[j].dungeon}</div>
+            <div class="col">${tenBestRuns[j].affixes[0].name}</div>
+            <div class="col">${tenBestRuns[j].score}</div>
+            <div class="col">${tenBestRuns[j].clear_time_ms}</div>
+            `
+            cardIndividual.appendChild(newDungeon)
+        }
     }
     displayChar();
 })
