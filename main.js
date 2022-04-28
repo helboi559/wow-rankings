@@ -1,8 +1,9 @@
-//FORM SUBMIT VARIABLE **********
+//ADD Banner, fine details(servername in card etc)
+//add listener to take all info(region,name,realm,specifics) - FEATURE 1
+//form submit variable **********
+const characterSearch = ()=> {
 let submitChar = document.querySelector('#submitCharSearch input')
 // console.log(submitChar)
-
-//add listener to take all info(region,name,realm,specifics)
 submitChar.addEventListener('click',(event) => {
     event.preventDefault();
     //SELECT HTML ELEMENTS ************
@@ -48,26 +49,40 @@ submitChar.addEventListener('click',(event) => {
         cardRaidPro.textContent = `Current Progression: ${dataRaid.raid_progression['sepulcher-of-the-first-ones'].summary} `
         cardGear.textContent = `Gear Score: ${dataGear.gear.item_level_equipped}`
 
-        //add top 10 runs by the character by going through each run and creating new element
+        //add top 10 runs by the character by going through each run and creating new element -FEATURE 2
         let tenBestRuns = dataIndividualRun.mythic_plus_best_runs
         for(let j = 0; j < tenBestRuns.length ; j++) {
             // console.log(tenBestRuns[j])
+            let convertTime = tenBestRuns[j].clear_time_ms
+            const milliToMin = (convertTime) => {
+            let min = Math.floor(convertTime/60000)
+            // console.log(min)
+            let seconds = (convertTime % 60000 /1000).toFixed(0)
+            // console.log(seconds)
+            if(seconds<10) {
+                return `${min}:0${seconds}`
+            } else {
+                return `${min}:${seconds}`
+            }
+            
+        }
             let newDungeon = document.createElement('div')
             newDungeon.className = 'row'
             newDungeon.innerHTML = `
             <div class="col">${tenBestRuns[j].dungeon}</div>
             <div class="col">${tenBestRuns[j].affixes[0].name}</div>
             <div class="col">${tenBestRuns[j].score}</div>
-            <div class="col">${tenBestRuns[j].clear_time_ms}</div>
+            <div class="col">${milliToMin(convertTime)}</div>
             `
             cardIndividual.appendChild(newDungeon)
         }
     }
     displayChar();
 })
+}
+characterSearch();
 
-
-
+//display top group runs leaderboard - Feature 3
 async function displayRio(){
     let mythicRankings = document.querySelector('#mythicRankings')
     let rioResponse = await fetch('https://raider.io/api/v1/mythic-plus/runs?season=season-sl-3&region=us&dungeon=all&affixes=all&page=0')

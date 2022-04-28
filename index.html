@@ -12,7 +12,8 @@
 <body>
     <form id="charSearch">
         <div class="characterFilter">
-        <div class="">
+            <h3>Character Search</h3>
+        <div class="line">
         <label for="regionSelect">Select character region: USA(us), Europe(eu), Korea(kr), Taiwan(tw)**REQUIRED**</label>
         <select id="regionSelect" aria-label="Default select example">
             <option value="" selected>select</option>
@@ -22,8 +23,8 @@
             <option value="tw">tw</option>
         </select>
         </div>
-        <div class="">
-            <label>Select realm(server): </label>
+        <div class="line">
+            <label>Select realm(server): **REQUIRED**</label>
             <select id="serverSelect" aria-label="Default select example">
                 <option selected>select</option>
                 <option value="alterac-mountains">alterac-mountains(us)</option>
@@ -34,13 +35,13 @@
                 <option value="firetree">firetree(us)</option>
             </select>
         </div>
-        <div id="charName" class="">
+        <div id="charName" class="line">
         <label>Name of the character to find(case-insensitive): </label>
-        Names to test(hsuroger-warthbringer(tw),ivazz-kazzak(eu))<input type="text">
+        Names to test(hsuroger-warthbringer(tw),ivazz-kazzak(eu))**REQUIRED**<input type="text">
         </div>
         <div id="submitCharSearch" class="">
             <label for="">Search for Character</label>
-            <input type="submit">
+            <input type="submit" value="Search">
         </div>
         </div>
         <div class="card" style="display: none;">
@@ -58,41 +59,42 @@
             <div id='individualRuns' class="card-body container">
                 <h3>Top 10 Best Runs</h3>
                 <div class="row">
-                    <div class="col">
+                    <div class="col heading">
                         Dungeon
                     </div>
-                    <div class="col">
+                    <div class="col heading">
                         Affix
                     </div>
-                    <div class="col">
+                    <div class="col heading">
                         Score
                     </div>
-                    <div class="col">
+                    <div class="col heading">
                         Best Time
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="footer">
         <div id="mythicRankings" class="container">
             <h3>5-Man Team Dungeon Leaderboards:</h3>
             <div class="row">
-                <div class="col">
+                <div class="col heading">
                     Rank
                 </div>
-                <div class="col">
+                <div class="col heading">
                     Dungeon
                 </div>
-                <div class="col">
+                <div class="col heading">
                     Level
                 </div>
-                <div class="col">
+                <div class="col heading">
                     Time
                 </div>
-                <div class="col">
+                <div class="col heading">
                     Score
                 </div>
-                <div class="col">
+                <div class="col heading">
                     Roster
                 </div>
             </div>

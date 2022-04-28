@@ -1,3 +1,50 @@
 .characterFilter {
-    background-color: aqua;
+    background-color: gray;
+    color: aliceblue;
+}
+
+h3 {
+    text-decoration: underline;
+    color: aliceblue;
+    background-color: black;
+}
+
+.footer {
+    background-color:rgb(21, 20, 20);
+}
+
+.col.heading {
+    text-decoration: underline;
+}
+
+.line:nth-child(odd) {
+    background-color: rgb(159, 146, 146);
+}
+
+.line:nth-child(even) {
+    background-color: rgb(52, 48, 48);
+}
+
+.row {
+    color: aliceblue;
+}
+.row:nth-child(odd) {
+    background-color: rgb(159, 146, 146);
+}
+
+.row:nth-child(even) {
+    background-color: rgb(52, 48, 48);
+}
+
+.card {
+    background-color: rgb(21, 17, 17);
+    color: aliceblue;
+}
+
+li:nth-child(odd) {
+    background-color: rgb(159, 146, 146);
+}
+
+li:nth-child(even) {
+    background-color: rgb(52, 48, 48);
 }
