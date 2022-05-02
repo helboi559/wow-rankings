@@ -168,9 +168,10 @@ _Below is an example of what individual score looks like and JSON layout._
 
 ## Feature 3 - Top 20 highest scoring (5-man) dungeons by team.
 
-Live data is pulled and updated daily to outline to highest scoring 5-man run in the season that was completed to date.
+Live data is pulled and updated daily to outline to highest scoring 5-man run in the season that was completed to date. In addition, a tooltip is added to demonstrate when the run was completed and with how much time remaining.
 
 ![example List](./images/List_example.png)
+![tooltip](./images/tooltip.png)
 
 Below is a sample of what the JSON code will look like in finding the best runs to date.
 

@@ -1,4 +1,4 @@
-//ADD Banner, fine details(servername in card etc, add navbar, fix team roster, add tooltip?1)
+//ADD Banner, fine details(Responsive)
 
 //create form and take user input (region,name,realm(server name)) - FEATURE 1 *******
 const characterSearch = ()=> {
@@ -119,7 +119,7 @@ async function displayRio(){
         <div class="col">${teamRun.rank}</div>
         <div class="col">${teamRun.run.dungeon.short_name}</div>
         <div class="col">+${teamRun.run.mythic_level}</div>
-        <div class="col">${milliToMin(convertTime)}</div>
+        <div class="col" data-bs-toggle="tooltip" title="Completed on ${teamRun.run.completed_at}, Time remaining ${milliToMin(teamRun.run.time_remaining_ms)}" data-bs-placement="top">${milliToMin(convertTime)}</div>
         <div class="col">${teamRun.score}</div>
         <div class="col-2"><a href="https://raider.io${teamRun.run.roster[0].character.path}">${teamRun.run.roster[0].character.name}</a>,<a href=https://raider.io${teamRun.run.roster[1].character.path}>${teamRun.run.roster[1].character.name}</a></div>
         <div class="col-2"><a href=https://raider.io${teamRun.run.roster[2].character.path}>${teamRun.run.roster[2].character.name}</a>,<a href=https://raider.io${teamRun.run.roster[3].character.path}>${teamRun.run.roster[3].character.name}</a></div>
@@ -128,4 +128,10 @@ async function displayRio(){
         mythicRankings.appendChild(runListItem)
     }
 }
+//enable all tooltips
 displayRio();
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
