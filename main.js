@@ -1,6 +1,6 @@
-//ADD Banner, fine details(Responsive)
 
-//create form and take user input (region,name,realm(server name)) - FEATURE 1 *******
+
+//take form user input (region,name,realm(server name)) and show "hidden card" and display content - FEATURE 1 / FEATURE 2
 const characterSearch = ()=> {
 //form submit variable 
 let submitChar = document.querySelector('#submitCharSearch input')
@@ -8,20 +8,20 @@ let submitChar = document.querySelector('#submitCharSearch input')
 submitChar.addEventListener('click',(event) => {
     event.preventDefault();
     //SELECT HTML ELEMENTS
-    //OPTIONS IN CHAR SEARCH ELEMENTS **** FEATURE 1A
+    //OPTIONS IN CHAR SEARCH ELEMENTS(REGION,SERVER,NAME) **** FEATURE 1A
     let regionSelect = document.querySelector("#regionSelect")
     let serverSelect = document.querySelector('#serverSelect')
     let charName = document.querySelector('#charName input')
     // let specificCharInfo = document.querySelector("#specificInfo")
     
-    //HIDDEN CARD TEMPLATE ELEMENTS TO DISPLAY IN CHAR SEARCH ELEMENTS*****  FEATURE 1A
+    //HIDDEN CARD TEMPLATE ELEMENTS TO DISPLAY IN CHAR SEARCH ELEMENTS(PORTRAIT OF CHAR, STATIC INFO(RACE,LEVEL,CLASS))*****  FEATURE 1A
     let charImage = document.querySelector("img")
     let charCardInfo = document.querySelector(".card")
     let cardTitle = document.querySelector(".card h5")
     let cardInfo = document.querySelector(".card p")
     let cardSeasonScore = document.querySelector("#dungeonScore")
     
-    // HIDDEN CARD TEMPLATE ELEMENTS TO DISPLAY IN CHAR SEARCH ELEMENTS- DIFFERENT ENDPOINTS***** FEATURE 1B
+    // HIDDEN CARD TEMPLATE ELEMENTS TO DISPLAY IN CHAR SEARCH ELEMENTS- (DYMANIC INFO(SCORE,RAID PROGRESSION ETC.))***** FEATURE 1B
     let cardRaidPro = document.querySelector("#raidProgression")
     let cardGear = document.querySelector("#gear")
     let cardIndividual = document.querySelector("#individualRuns")
@@ -53,6 +53,7 @@ submitChar.addEventListener('click',(event) => {
         cardGear.textContent = `Gear Score: ${dataGear.gear.item_level_equipped}`
 
         //add top 10 runs by the character by going through each run and creating new element -FEATURE 2
+        //convert milliseconds to min/sec format
         let tenBestRuns = dataIndividualRun.mythic_plus_best_runs
         for(let j = 0; j < tenBestRuns.length ; j++) {
             // console.log(tenBestRuns[j])
@@ -85,7 +86,7 @@ submitChar.addEventListener('click',(event) => {
 }
 characterSearch();
 
-//display top group runs leaderboard - Feature 3
+//leaderboards of top 20 dungeon runs(5-man team)- Feature 3
 async function displayRio(){
     let mythicRankings = document.querySelector('#mythicRankings')
     let rioResponse = await fetch('https://raider.io/api/v1/mythic-plus/runs?season=season-sl-3&region=us&dungeon=all&affixes=all&page=0')
@@ -121,15 +122,16 @@ async function displayRio(){
         <div class="col">+${teamRun.run.mythic_level}</div>
         <div class="col" data-bs-toggle="tooltip" title="Completed on ${teamRun.run.completed_at}, Time remaining ${milliToMin(teamRun.run.time_remaining_ms)}" data-bs-placement="top">${milliToMin(convertTime)}</div>
         <div class="col">${teamRun.score}</div>
-        <div class="col-2"><a href="https://raider.io${teamRun.run.roster[0].character.path}">${teamRun.run.roster[0].character.name}</a>,<a href=https://raider.io${teamRun.run.roster[1].character.path}>${teamRun.run.roster[1].character.name}</a></div>
-        <div class="col-2"><a href=https://raider.io${teamRun.run.roster[2].character.path}>${teamRun.run.roster[2].character.name}</a>,<a href=https://raider.io${teamRun.run.roster[3].character.path}>${teamRun.run.roster[3].character.name}</a></div>
-        <div class="col-1"><a href=https://raider.io${teamRun.run.roster[4].character.path}>${teamRun.run.roster[4].character.name}</a></div>
+        <div class="col-2"><a href="https://raider.io${teamRun.run.roster[0].character.path}" class="link-info">${teamRun.run.roster[0].character.name}</a>,<a href=https://raider.io${teamRun.run.roster[1].character.path} class="link-info">${teamRun.run.roster[1].character.name}</a></div>
+        <div class="col-2"><a href=https://raider.io${teamRun.run.roster[2].character.path} class="link-info">${teamRun.run.roster[2].character.name}</a>,<a href=https://raider.io${teamRun.run.roster[3].character.path} class="link-info">${teamRun.run.roster[3].character.name}</a></div>
+        <div class="col-1"><a href=https://raider.io${teamRun.run.roster[4].character.path} class="link-info">${teamRun.run.roster[4].character.name}</a></div>
         `
         mythicRankings.appendChild(runListItem)
     }
 }
-//enable all tooltips
 displayRio();
+
+//enable all tooltips
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)

@@ -10,6 +10,7 @@
     <title>WOW Rankings</title>
 </head>
 <body>
+    <!-- API restricts having list of all characters info since data is Dynamic.  -->
     <form id="charSearch">
         <div class="characterFilter">
             <h3>Character Search</h3>
@@ -44,6 +45,7 @@
             <input type="submit" value="Search">
         </div>
         </div>
+        <!-- Created a "hidden card" element to placehold text and display when triggered -->
         <div class="card" style="display: none;">
             <img src="" class="card-img-top" alt="char avatar" style="width: 60px;">
             <div class="card-body"> 
@@ -74,8 +76,9 @@
                 </div>
             </div>
         </div>
-
-        <div class="footer">
+        
+    </form>
+    <div class="footer">
         <div id="mythicRankings" class="container">
             <h3>5-Man Team Dungeon Leaderboards:</h3>
             <div class="row align-items-start">
@@ -105,9 +108,7 @@
                 </div>
             </div>
         </div>
-        </div>
-        
-    </form>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

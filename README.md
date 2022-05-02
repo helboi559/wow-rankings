@@ -1,19 +1,19 @@
 # World Of Warcraft Rankings
 
-World of Warcraft(WOW) rankings provides an overview of achievemnts in a given season by displaying **live** progress of players in 2 ways, _Dungeon(5-man team)_ and _Raid(20-man Team)_ content in the game. In addition we can search for a particular character and find more specific information about that is pertinent in determining if you are 'good' for recruitement or not. score in 5-man team timed dungeons and current progression on Mythic(hardest difficulty) 20-man team which is calculated boss count defeated(out of 11 this season).In addition, you can type in a name of a live character and get the individual performance.
+World of Warcraft(WOW) rankings provides an overview of achievemnts in a given season by displaying **live** progress of players in 2 ways, _Dungeon(5-man team)_ and _Raid(20-man Team)_ content in the game. **Score** in 5-man team is timed dungeons and **current progression** in 20-man team raids are the two ways to compare performance. The main features are character search, individual character best scores, and top 20 best scores nationwide.
 
 ## Feature 1- Individual Character Search
 
-As mentioned above, the first feature will be an indivudal character search that will display live dynamic(live) information such as individual RIO Score, top 10 highest scoring dungeons, and current progression in 20-man.
+As mentioned above, the first feature will be an indivudal character search that will display dynamic(live) information such as an individual "RIO" Score, top 10 highest scoring dungeons, and current progression in 20-man.
 
 ### 1A- Dungeon(5-man team) & the individual 'RIO' score:
 
 This score is calculated with the following rules below:
 
-1. Completing a run within the time limit.
-2. Completing each dungeon(currently 10 active).
-3. Completing each variation of the dungeon(2 per.)
-4. Max Score of 200 points per variation with overall total being 4000 points.
+1. Out of 4000 points.
+2. Completing a run within the time limit.
+3. Completing each dungeon(currently 10 active).
+4. Completing each variation of the dungeon(2 variations per dungeon.)-(200 X 2 =400 Max Per Dungeon)
 
 ### 1B- Raid Progression(20-man team)
 
@@ -95,9 +95,11 @@ _Below is an example of what a overall score, current raid progression, and char
 
 ```
 
-### Feature 2 - Top 10 Highest Scoring 5-Man team dungeons for individual.
+## Feature 2 - Top 10 Highest Scoring 5-Man team dungeons for individual.
 
-Live information of Season to date in highest scoring dungeons integrated by character search.
+Live information of current season to date in highest scoring dungeons **integrated** by character search feature.
+
+Difficulty is determined by key Level(Key lvl 1(+1)=Easy -Key lvl 30(+30)=Hard)
 
 _Below is an example of what individual score looks like and JSON layout._
 ![example picture](./images/individual_run.png)
@@ -166,9 +168,9 @@ _Below is an example of what individual score looks like and JSON layout._
 
 ```
 
-## Feature 3 - Top 20 highest scoring (5-man) dungeons by team.
+## Feature 3 - Top 20 highest scoring (5-man) dungeon leaderboard.
 
-Live data is pulled and updated daily to outline to highest scoring 5-man run in the season that was completed to date. In addition, a tooltip is added to demonstrate when the run was completed and with how much time remaining.
+Live data is pulled and updated daily to outline the highest scoring runs in the season that was completed to date. In addition, a tooltip is added to demonstrate when the run was completed and with how much time remaining.
 
 ![example List](./images/List_example.png)
 ![tooltip](./images/tooltip.png)
@@ -282,6 +284,6 @@ Below is a sample of what the JSON code will look like in finding the best runs 
 
 -**Raider IO(RIO) API**: Pulls Live and static information from the game servers. [RIO API](https://raider.io/api#/)
 
--**RIO Website**:Actual display of content etc. [RIO Website](https://raider.io/api#/)
+-**RIO Website**: Actual display of content etc. [RIO Website](https://raider.io/api#/)
 
-https://worldofwarcraft.com/en-us/game/status/us realm list
+https://worldofwarcraft.com/en-us/game/status/us - realm(server) list
